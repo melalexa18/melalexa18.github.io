@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Melany | Cyber Portfolio</title>
+<meta name="description" content="Portafolio académico de Melany, estudiante de Ingeniería en Ciberseguridad en la Universidad del Istmo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=JetBrains+Mono:wght@400;700&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#050a16;
+  --panel:#0a1426;
+  --texto:#d8e6f7;
+  --suave:#8ea6c2;
+  --cian:#35f0ff;
+  --magenta:#ff3df0;
+  --lima:#c8ff3d;
+  --borde:rgba(53,240,255,.28);
+  --titulo:"Chakra Petch",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:1rem;background:var(--fondo)}
+body{
+  margin:0;color:var(--texto);
+  font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:1.0625rem;line-height:1.65;
+  background:
+    radial-gradient(60rem 30rem at 85% -5%,rgba(255,61,240,.18),transparent 60%),
+    radial-gradient(50rem 30rem at 0% 20%,rgba(53,240,255,.14),transparent 60%),
+    linear-gradient(rgba(53,240,255,.05) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(53,240,255,.05) 1px,transparent 1px) 0 0/44px 44px,
+    var(--fondo);
+  background-attachment:fixed;
+}
+/* líneas de escaneo */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.16) 3px);
+}
+a{color:var(--cian)}
+a:focus-visible{outline:3px solid var(--lima);outline-offset:3px}
+.contenedor{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+.mono{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em}
+
+/* Menú */
+header.menu{
+  position:sticky;top:0;z-index:20;padding:.9rem 0;
+  background:rgba(5,10,22,.85);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--borde);
+}
+header.menu .contenedor{display:flex;justify-content:space-between;align-items:center;gap:.75rem 1rem;flex-wrap:wrap}
+.marca{font-family:var(--mono);font-weight:700;font-size:.95rem;text-decoration:none;color:var(--cian);text-shadow:0 0 12px rgba(53,240,255,.6)}
+.marca span{color:var(--magenta)}
+nav a{font-family:var(--mono);font-size:.82rem;margin-left:.9rem;text-decoration:none;color:var(--suave)}
+nav a::before{content:"[ ";color:var(--magenta)}
+nav a::after{content:" ]";color:var(--magenta)}
+nav a:hover{color:var(--cian);text-shadow:0 0 10px rgba(53,240,255,.7)}
+
+/* Inicio */
+.hero{padding:4.5rem 0 3.5rem}
+.consola{
+  display:inline-block;background:var(--panel);border:1px solid var(--borde);
+  padding:.45rem .9rem;margin-bottom:1.75rem;color:var(--lima);
+  box-shadow:0 0 18px rgba(53,240,255,.12);
+}
+.consola .cursor{display:inline-block;width:.55em;height:1em;background:var(--lima);vertical-align:-.15em;margin-left:.25rem;animation:parpadeo 1s steps(2,start) infinite}
+.hero h1{
+  font-family:var(--titulo);font-weight:700;
+  font-size:clamp(2.8rem,10vw,7rem);line-height:.95;letter-spacing:-.01em;margin:0 0 1.25rem;
+  text-transform:uppercase;
+}
+.hero h1 .glitch{
+  display:block;position:relative;color:var(--cian);
+  text-shadow:0 0 22px rgba(53,240,255,.55);
+}
+.glitch::before,.glitch::after{
+  content:attr(data-text);position:absolute;inset:0;overflow:hidden;
+}
+.glitch::before{color:var(--magenta);transform:translate(3px,0);clip-path:inset(0 0 60% 0);text-shadow:none;animation:corte1 3.5s infinite steps(1)}
+.glitch::after{color:var(--lima);transform:translate(-3px,0);clip-path:inset(60% 0 0 0);text-shadow:none;animation:corte2 3.5s infinite steps(1)}
+.lema{
+  font-family:var(--titulo);font-size:clamp(1.3rem,3.5vw,1.9rem);font-weight:700;margin:0 0 1rem;
+  background:linear-gradient(90deg,var(--cian),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.desc{max-width:40rem;color:var(--suave);font-size:1.12rem;margin:0 0 1.75rem}
+.botones{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.boton{
+  display:inline-block;padding:.8rem 1.6rem;text-decoration:none;font-family:var(--mono);font-weight:700;font-size:.92rem;
+  color:var(--fondo);background:var(--cian);
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  transition:filter .15s ease,transform .15s ease;
+}
+.boton:hover{filter:drop-shadow(0 0 10px var(--cian)) brightness(1.1);transform:translateY(-2px)}
+.boton.sec{background:var(--magenta)}
+.boton.sec:hover{filter:drop-shadow(0 0 10px var(--magenta)) brightness(1.1)}
+.cualidades{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.cualidades li{font-family:var(--mono);font-size:.85rem;border:1px solid var(--magenta);color:var(--magenta);padding:.2rem .8rem;box-shadow:0 0 10px rgba(255,61,240,.25) inset}
+.cinta{margin-top:2.5rem;padding:.9rem 0;border-top:1px dashed var(--borde);border-bottom:1px dashed var(--borde);display:flex;flex-wrap:wrap;gap:.4rem 1.75rem;color:var(--suave)}
+.cinta span::before{content:"// ";color:var(--cian)}
+
+/* Secciones */
+section{padding:3.5rem 0;border-top:1px solid var(--borde)}
+.eti{display:block;color:var(--magenta);margin-bottom:.5rem}
+.eti::before{content:"// ";color:var(--cian)}
+h2{
+  font-family:var(--titulo);font-weight:700;text-transform:uppercase;
+  font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.15;margin:0 0 1.5rem;
+  text-shadow:0 0 18px rgba(53,240,255,.25);
+}
+.dos{display:grid;grid-template-columns:1fr 2fr;gap:2rem}
+.dos > .lado h2{margin:0}
+.texto{max-width:40rem}
+.texto p{margin:0 0 1rem}
+.texto h3{font-family:var(--titulo);font-size:1.3rem;margin:0 0 .75rem;color:var(--cian)}
+@media (max-width:42rem){.dos{grid-template-columns:1fr;gap:1rem}}
+
+/* Paneles con esquinas */
+.panel{
+  position:relative;background:var(--panel);border:1px solid var(--borde);padding:1.5rem;
+  box-shadow:0 0 30px rgba(53,240,255,.07);
+}
+.panel::before,.panel::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--cian)}
+.panel::before{top:-2px;left:-2px;border-right:0;border-bottom:0}
+.panel::after{bottom:-2px;right:-2px;border-left:0;border-top:0}
+
+/* Formación */
+.estudio h3{margin:0 0 .4rem;font-family:var(--titulo);font-size:1.5rem}
+.estudio p{margin:0;color:var(--suave)}
+.estado{display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;font-family:var(--mono);font-size:.85rem;color:var(--lima)}
+.estado::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:var(--lima);box-shadow:0 0 10px var(--lima);animation:pulso 1.8s ease-in-out infinite}
+
+/* Herramientas */
+.fila{display:grid;grid-template-columns:3rem 1fr auto;gap:1rem;align-items:baseline;padding:1.1rem 0;border-bottom:1px solid var(--borde)}
+.fila:first-of-type{padding-top:0}
+.fila h3{margin:0;font-family:var(--titulo);font-size:1.2rem}
+.fila p{margin:.15rem 0 0;color:var(--suave)}
+.fila .num{font-family:var(--mono);color:var(--magenta);font-weight:700}
+.fila .tag{font-family:var(--mono);font-size:.78rem;color:var(--cian);border:1px solid var(--cian);padding:.1rem .7rem;white-space:nowrap}
+@media (max-width:42rem){.fila{grid-template-columns:2.5rem 1fr}.fila .tag{grid-column:2;justify-self:start}}
+.nota{margin:1.5rem 0 0;padding:1rem 1.25rem;background:var(--panel);border-left:3px solid var(--magenta);max-width:44rem;color:var(--suave);font-size:.98rem}
+
+/* Idiomas */
+.idioma{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
+.nivel{font-family:var(--titulo);font-weight:700;font-size:3.4rem;line-height:1;color:var(--cian);text-shadow:0 0 20px rgba(53,240,255,.6)}
+.idioma h3{margin:0;color:var(--texto)}
+.idioma p{margin:.2rem 0 0;color:var(--suave)}
+.barra{display:flex;gap:.35rem;margin-top:1.25rem;max-width:30rem}
+.barra span{flex:1;height:.6rem;background:rgba(53,240,255,.12)}
+.barra span.on{background:var(--cian);box-shadow:0 0 10px rgba(53,240,255,.7)}
+.escala{display:flex;max-width:30rem;justify-content:space-between;margin-top:.35rem;color:var(--suave)}
+
+/* Intereses */
+.areas{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.areas .panel{padding:1.25rem}
+.areas h3{margin:0 0 .35rem;font-family:var(--titulo);font-size:1.15rem;color:var(--cian)}
+.areas p{margin:0;color:var(--suave)}
+@media (max-width:42rem){.areas{grid-template-columns:1fr}}
+
+/* Proyectos */
+.proximo{max-width:40rem}
+.proximo h3{margin:0 0 .5rem;font-family:var(--titulo);font-size:1.4rem;color:var(--magenta)}
+.proximo p{margin:0}
+
+.contacto-lista{list-style:none;margin:0;padding:0;font-size:1.05rem}
+.contacto-lista li{padding:.35rem 0;overflow-wrap:anywhere}
+.contacto-lista li::before{content:"$ ";font-family:var(--mono);color:var(--lima)}
+
+footer{padding:2.5rem 0;border-top:1px solid var(--borde);color:var(--suave);font-size:.95rem}
+footer .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+footer strong{font-family:var(--mono);color:var(--cian);font-size:.9rem}
+
+@keyframes parpadeo{to{visibility:hidden}}
+@keyframes pulso{50%{opacity:.35}}
+@keyframes corte1{0%,88%,100%{clip-path:inset(0 0 100% 0)}90%{clip-path:inset(10% 0 55% 0)}94%{clip-path:inset(40% 0 30% 0)}97%{clip-path:inset(0 0 70% 0)}}
+@keyframes corte2{0%,86%,100%{clip-path:inset(100% 0 0 0)}89%{clip-path:inset(60% 0 10% 0)}93%{clip-path:inset(25% 0 50% 0)}96%{clip-path:inset(75% 0 0 0)}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .glitch::before,.glitch::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="menu">
+  <div class="contenedor">
+    <a class="marca" href="#inicio">MELANY<span>@</span>cyber-portfolio</a>
+    <nav aria-label="Principal">
+      <a href="#perfil">perfil</a>
+      <a href="#formacion">formación</a>
+      <a href="#herramientas">herramientas</a>
+      <a href="#idiomas">idiomas</a>
+      <a href="#proyectos">proyectos</a>
+      <a href="#contacto">contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="contenedor">
+
+  <div class="hero" id="inicio">
+    <span class="consola mono">&gt; portafolio_academico --2026<span class="cursor" aria-hidden="true"></span></span>
+    <h1>Hola, soy <span class="glitch" data-text="Melany.">Melany.</span></h1>
+    <p class="lema">El futuro también se protege.</p>
+    <p class="desc">Estudiante de Ingeniería en Ciberseguridad. Estoy construyendo mi camino en el mundo de la seguridad digital. Aprendo, experimento y desarrollo habilidades para comprender la tecnología desde una perspectiva segura.</p>
+    <div class="botones">
+      <a class="boton" href="#perfil">Explorar portafolio</a>
+      <a class="boton sec" href="#contacto">Hablemos</a>
+    </div>
+    <ul class="cualidades">
+      <li>Curiosidad</li>
+      <li>Aprendizaje</li>
+      <li>Constancia</li>
+    </ul>
+    <div class="cinta mono" aria-hidden="true">
+      <span>Security / Profile PTY — 2026</span>
+      <span>En formación Mode</span>
+      <span>Digital Security</span>
+      <span>Build Knowledge</span>
+      <span>Protect What Matters</span>
+    </div>
+  </div>
+
+  <section id="perfil" class="dos">
+    <div class="lado">
+      <span class="eti mono">02 perfil</span>
+      <h2>Una mente curiosa. Un mundo por explorar.</h2>
+    </div>
+    <div class="texto panel">
+      <h3>Mi visión en construcción</h3>
+      <p>Soy estudiante de Ingeniería en Ciberseguridad en la Universidad del Istmo. Actualmente estoy fortaleciendo mis conocimientos técnicos y explorando distintas áreas de la tecnología y la protección de sistemas.</p>
+      <p>Me interesa aprender cómo funcionan las herramientas, los sistemas y las prácticas que ayudan a mantener la información segura. Creo en la importancia de la curiosidad, la disciplina y la práctica constante para crecer en este campo.</p>
+      <p style="margin:0">Este portafolio crecerá conmigo y con cada nuevo aprendizaje.</p>
+    </div>
+  </section>
+
+  <section id="formacion" class="dos">
+    <div class="lado">
+      <span class="eti mono">03 formación</span>
+      <h2>Mi formación académica</h2>
+    </div>
+    <div class="estudio panel">
+      <h3>Universidad del Istmo</h3>
+      <p>Ingeniería en Ciberseguridad · Formación universitaria</p>
+      <span class="estado">Estado: En curso</span>
+    </div>
+  </section>
+
+  <section id="herramientas">
+    <span class="eti mono">04 conocimientos y herramientas</span>
+    <h2>Herramientas que voy desarrollando</h2>
+    <p class="texto">Estas son algunas de las áreas y herramientas que forman parte de mi aprendizaje actual.</p>
+    <div style="margin-top:1.5rem">
+      <div class="fila"><span class="num">01</span><div><h3>Fundamentos de ciberseguridad</h3><p>Conceptos esenciales de seguridad digital y protección de la información.</p></div><span class="tag">En formación</span></div>
+      <div class="fila"><span class="num">02</span><div><h3>Python</h3><p>Aprendizaje de programación y lógica para resolver problemas.</p></div><span class="tag">En formación</span></div>
+      <div class="fila"><span class="num">03</span><div><h3>HTML</h3><p>Conocimientos iniciales para estructurar contenido en páginas web.</p></div><span class="tag">En formación</span></div>
+      <div class="fila"><span class="num">04</span><div><h3>PSeInt</h3><p>Práctica de lógica de programación mediante pseudocódigo.</p></div><span class="tag">En formación</span></div>
+      <div class="fila"><span class="num">05</span><div><h3>Linux</h3><p>Exploración del entorno y aprendizaje de comandos básicos.</p></div><span class="tag">En formación</span></div>
+    </div>
+    <p class="nota">Los estados reflejan mi etapa actual de aprendizaje; no representan certificaciones ni experiencia profesional.</p>
+  </section>
+
+  <section id="idiomas" class="dos">
+    <div class="lado">
+      <span class="eti mono">05 idiomas</span>
+      <h2>Comunicarme en un mundo conectado</h2>
+    </div>
+    <div class="texto">
+      <div class="idioma">
+        <span class="nivel">B2</span>
+        <div>
+          <h3>Inglés · Intermedio alto</h3>
+          <p>Nivel B2 del Marco Común Europeo de Referencia (MCER).</p>
+        </div>
+      </div>
+      <div class="barra" role="img" aria-label="Nivel B2 en la escala A1 a C2">
+        <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+      </div>
+      <div class="escala mono" aria-hidden="true"><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
+      <p style="margin-top:1.25rem">En ciberseguridad gran parte de la documentación, las herramientas y los recursos de aprendizaje están en inglés. Mi nivel me permite aprovecharlos y comunicarme en entornos académicos y tecnológicos.</p>
+    </div>
+  </section>
+
+  <section id="intereses">
+    <span class="eti mono">06 áreas de interés</span>
+    <h2>Hacia dónde quiero crecer</h2>
+    <div class="areas">
+      <div class="panel"><h3>Seguridad informática</h3><p>Conocer los principios y las prácticas que permiten proteger sistemas, dispositivos e información.</p></div>
+      <div class="panel"><h3>Ethical Hacking</h3><p>Explorar técnicas de evaluación de seguridad desde una perspectiva ética y autorizada.</p></div>
+      <div class="panel"><h3>Desarrollo tecnológico</h3><p>Conocer herramientas y desarrollar soluciones digitales para responder a diferentes necesidades.</p></div>
+      <div class="panel"><h3>Análisis forense digital</h3><p>Aprender sobre la identificación, preservación y análisis de evidencias digitales.</p></div>
+      <div class="panel"><h3>Seguridad de redes</h3><p>Comprender cómo proteger las comunicaciones, infraestructuras y dispositivos conectados.</p></div>
+      <div class="panel"><h3>Seguridad en la nube</h3><p>Explorar mecanismos para proteger datos, servicios y recursos alojados en plataformas cloud.</p></div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <span class="eti mono">07 proyectos</span>
+    <h2>Ideas que pronto se convertirán en proyectos</h2>
+    <div class="proximo panel">
+      <h3>Mi próximo capítulo</h3>
+      <p>Mi trabajo práctico tendrá su espacio. Aquí compartiré ejercicios, laboratorios y proyectos académicos desarrollados durante mi formación en ciberseguridad y programación.</p>
+      <span class="estado">Estado: Portafolio en crecimiento</span>
+    </div>
+  </section>
+
+  <section id="contacto" class="dos">
+    <div class="lado">
+      <span class="eti mono">08 contacto</span>
+      <h2>Las buenas conexiones abren posibilidades</h2>
+    </div>
+    <div class="texto">
+      <p>Estoy abierta a conectar, aprender y compartir ideas relacionadas con la tecnología y la ciberseguridad.</p>
+      <ul class="contacto-lista">
+        <li>Correo electrónico: <a href="mailto:melanyarroyo746@gmail.com">melanyarroyo746@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/melalexa18">github.com/melalexa18</a></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="contenedor">
+    <span><strong>MELANY · PORTAFOLIO ACADÉMICO</strong> · © 2026</span>
+    <a href="#inicio">Volver al inicio ↑</a>
+  </div>
+</footer>
+
+</body>
+</html>
